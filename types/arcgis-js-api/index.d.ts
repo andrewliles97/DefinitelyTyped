@@ -652,7 +652,7 @@ declare namespace __esri {
     buffer(geometry: Geometry | Geometry[], distance: number | number[], unit: string | number, unionResults?: boolean): Polygon | Polygon[];
     clip(geometry: Geometry, envelope: Extent): Geometry;
     contains(containerGeometry: Geometry, insideGeometry: Geometry): boolean;
-    convexHull(geometry: Geometry, merge?: boolean): Geometry | Geometry[];
+    convexHull(geometry: Geometry | Geometry[], merge?: boolean): Geometry | Geometry[];
     crosses(geometry1: Geometry, geometry2: Geometry): boolean;
     cut(geometry: Geometry, cutter: Polyline): Geometry[];
     densify(geometry: Geometry, maxSegmentLength: number, maxSegmentLengthUnit: string | number): Geometry;
@@ -8408,9 +8408,9 @@ declare namespace __esri {
   }
 
   export interface ExternalRenderer {
-    setup(): void;
-    render(): void;
-    dispose(): void;
+    setup(context: RenderContext): void;
+    render(context: RenderContext): void;
+    dispose(context: RenderContext): void;
   }
 
   export interface RenderCamera {
